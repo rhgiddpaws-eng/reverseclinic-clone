@@ -1,0 +1,37 @@
+{
+  "__home__": {
+    "sourceUrl": "https://md-jp.reverseclinic.com/",
+    "title": "REVERSE CLINIC MYEONGDONG JPN",
+    "file": "/reverseclinic-mirror/pages/md-jp/__home__.html"
+  },
+  "_simpleApps=member--terms-of-use": {
+    "sourceUrl": "https://md-jp.reverseclinic.com/?_simpleApps=member%2Fterms-of-use",
+    "title": "reverseclinic",
+    "file": "/reverseclinic-mirror/pages/md-jp/_simpleApps=member--terms-of-use.html"
+  },
+  "_simpleApps=member--privacy-policy": {
+    "sourceUrl": "https://md-jp.reverseclinic.com/?_simpleApps=member%2Fprivacy-policy",
+    "title": "reverseclinic",
+    "file": "/reverseclinic-mirror/pages/md-jp/_simpleApps=member--privacy-policy.html"
+  },
+  "_simpleApps=member--patients-rights": {
+    "sourceUrl": "https://md-jp.reverseclinic.com/?_simpleApps=member%2Fpatients-rights",
+    "title": "reverseclinic",
+    "file": "/reverseclinic-mirror/pages/md-jp/_simpleApps=member--patients-rights.html"
+  },
+  "_simpleApps=member--login": {
+    "sourceUrl": "https://md-jp.reverseclinic.com/?_simpleApps=member/login",
+    "title": "reverseclinic",
+    "file": "/reverseclinic-mirror/pages/md-jp/_simpleApps=member--login.html"
+  },
+  "_simpleApps=member--join": {
+    "sourceUrl": "https://md-jp.reverseclinic.com/?_simpleApps=member%2Fjoin",
+    "title": "reverseclinic",
+    "file": "/reverseclinic-mirror/pages/md-jp/_simpleApps=member--join.html"
+  },
+  "c691fbb3286041": {
+    "sourceUrl": "https://md-jp.reverseclinic.com/index.php?idx=c691fbb3286041",
+    "title": "プロモーション | REVERSE CLINIC MYEONGDONG JPN",
+    "file": "/reverseclinic-mirror/pages/md-jp/c691fbb3286041.html"
+  }
+}

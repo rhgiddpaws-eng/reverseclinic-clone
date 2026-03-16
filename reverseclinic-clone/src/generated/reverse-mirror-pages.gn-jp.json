@@ -1,0 +1,37 @@
+{
+  "__home__": {
+    "sourceUrl": "https://gn-jp.reverseclinic.com/",
+    "title": "REVERSE CLINIC GANGNAM JPN",
+    "file": "/reverseclinic-mirror/pages/gn-jp/__home__.html"
+  },
+  "_simpleApps=member--terms-of-use": {
+    "sourceUrl": "https://gn-jp.reverseclinic.com/?_simpleApps=member%2Fterms-of-use",
+    "title": "reverseclinic",
+    "file": "/reverseclinic-mirror/pages/gn-jp/_simpleApps=member--terms-of-use.html"
+  },
+  "_simpleApps=member--privacy-policy": {
+    "sourceUrl": "https://gn-jp.reverseclinic.com/?_simpleApps=member%2Fprivacy-policy",
+    "title": "reverseclinic",
+    "file": "/reverseclinic-mirror/pages/gn-jp/_simpleApps=member--privacy-policy.html"
+  },
+  "_simpleApps=member--patients-rights": {
+    "sourceUrl": "https://gn-jp.reverseclinic.com/?_simpleApps=member%2Fpatients-rights",
+    "title": "reverseclinic",
+    "file": "/reverseclinic-mirror/pages/gn-jp/_simpleApps=member--patients-rights.html"
+  },
+  "_simpleApps=member--login": {
+    "sourceUrl": "https://gn-jp.reverseclinic.com/?_simpleApps=member/login",
+    "title": "reverseclinic",
+    "file": "/reverseclinic-mirror/pages/gn-jp/_simpleApps=member--login.html"
+  },
+  "_simpleApps=member--join": {
+    "sourceUrl": "https://gn-jp.reverseclinic.com/?_simpleApps=member%2Fjoin",
+    "title": "reverseclinic",
+    "file": "/reverseclinic-mirror/pages/gn-jp/_simpleApps=member--join.html"
+  },
+  "c691fbb3286041": {
+    "sourceUrl": "https://gn-jp.reverseclinic.com/index.php?idx=c691fbb3286041",
+    "title": "プロモーション | REVERSE CLINIC GANGNAM JPN",
+    "file": "/reverseclinic-mirror/pages/gn-jp/c691fbb3286041.html"
+  }
+}

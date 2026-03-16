@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'Nanum Square';
+  src: url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareL.eot"); /* IE9 Compat Modes */
+  src: url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareL.eot") format('embedded-opentype'), /* IE6-IE8 */
+       url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareL.woff") format('woff'), /* Modern Browsers */
+       url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareL.ttf")  format('truetype'), /* Safari, Android, iOS */
+       url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareOTFLight.svg") format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  300;
+}
+
+@font-face {
+  font-family: 'Nanum Square';
+  src: url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareR.eot"); /* IE9 Compat Modes */
+  src: url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareR.eot") format('embedded-opentype'), /* IE6-IE8 */
+       url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareR.woff") format('woff'), /* Modern Browsers */
+       url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareR.ttf")  format('truetype'), /* Safari, Android, iOS */
+       url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareOTFR.svg") format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}
+
+@font-face {
+  font-family: 'Nanum Square';
+  src: url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareB.eot"); /* IE9 Compat Modes */
+  src: url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareB.eot") format('embedded-opentype'), /* IE6-IE8 */
+       url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareB.woff") format('woff'), /* Modern Browsers */
+       url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareB.ttf")  format('truetype'), /* Safari, Android, iOS */
+       url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareOTFB.svg") format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  700;
+}
+
+@font-face {
+  font-family: 'Nanum Square';
+  src: url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareEB.eot"); /* IE9 Compat Modes */
+  src: url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareEB.eot") format('embedded-opentype'), /* IE6-IE8 */
+       url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareEB.woff") format('woff'), /* Modern Browsers */
+       url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareEB.ttf")  format('truetype'), /* Safari, Android, iOS */
+       url("/reverseclinic-mirror/site/reverseclinic.com/mvwizFramework7.3/mvwizWebCom/design/fonts/NanumSquare/NanumSquareOTFExtraBold.svg") format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  900;
+}
+

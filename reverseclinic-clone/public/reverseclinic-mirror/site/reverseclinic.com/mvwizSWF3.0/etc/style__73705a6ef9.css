@@ -1,0 +1,704 @@
+@charset "utf-8";
+
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+
+
+
+
+
+.mvwizSWF2 .page_box{
+border:1px solid #DDDDDD;
+font-size:12pt;
+font-family:arial;
+font-weight:bold;
+padding:5px 10px 5px 10px;
+cursor:pointer;
+color:#666666;
+}
+
+.mvwizSWF2  .page_over{
+background-color:#8c8c8c;
+color:#FFFFFF;
+}
+
+
+
+
+.mvwizSWF2 .bbsmenu1{padding:10px;background-color:#00b2cf;
+color:#FFFFFF;font-size:9pt;font-family:맑은 고딕;cursor:pointer;font-weight:bold;border-bottom:1px solid #222222;}
+.mvwizSWF2 .bbsmenu2{padding:10px;background-color:#37383d;
+color:#FFFFFF;font-size:9pt;font-family:맑은 고딕;cursor:pointer;border-bottom:1px solid #222222;}
+
+
+.mvwizSWF2 .tabmenu1 {
+	background-color:#f7f7f7;
+	padding:3px;
+
+
+}
+
+.mvwizSWF2 .tabmenu1 .t1{
+padding:10px;text-align:center;
+width:150px;
+background-color:#00b2cf;
+color:#FFFFFF;
+font-size:9pt;font-family:맑은 고딕;
+float:left;
+height:20px;
+cursor:pointer;
+margin:1px;
+overflow:hidden;
+}
+.mvwizSWF2 .tabmenu1 .t2{
+padding:10px;text-align:center;
+width:150px;
+background-color:#37383d;
+color:#FFFFFF;
+font-size:9pt;font-family:맑은 고딕;
+float:left;
+height:20px;
+cursor:pointer;
+margin:1px;
+overflow:hidden;
+}
+
+
+
+
+
+
+
+
+
+.mvwizSWF2 .ftbl2{
+	border:1px solid #CCCCCC;
+}
+
+.mvwizSWF2 .ftbl2 td{
+	font-size:10pt;font-family:맑은 고딕,verdana;
+	padding:10px;
+	border-bottom:1px solid #CCCCCC;
+	vertical-align: middle;
+}
+
+.mvwizSWF2 .ftbl2 .t_header{
+	background-color:#DDDDDD;
+	text-align:right;
+}
+
+
+.mvwizSWF2 .ftbl2 td input[type=text],input[type=password],select,textarea{
+	padding:5px;font-size:9pt;font-family:맑은 고딕;border:1px solid #DDDDDD;
+	border-radius:5px;
+}
+
+
+
+
+
+.mvwizSWF2 .ftbl1{
+
+}
+
+.mvwizSWF2 .ftbl1 td{
+	font-size:11pt;font-family:맑은 고딕,verdana;
+	padding:5px;
+	line-height:140%;
+	vertical-align: middle;
+}
+
+.mvwizSWF2 .ftbl1 .t_header{
+	text-align:right;
+}
+
+.mvwizSWF2 .ftbl1 td input[type=text]{
+	padding:10px;font-size:13pt;font-family:맑은 고딕;border:1px solid #DDDDDD;
+	border-radius:5px;
+}
+.mvwizSWF2 .ftbl1 td input[type=password]{
+	padding:10px;font-size:13pt;font-family:맑은 고딕;border:1px solid #DDDDDD;
+	border-radius:5px;
+}
+
+.mvwizSWF2 .ftbl1 td select{
+	padding:10px;font-size:13pt;font-family:맑은 고딕;border:1px solid #DDDDDD;
+	border-radius:5px;
+}
+
+.mvwizSWF2 .ftbl1 td textarea{
+	padding:10px;font-size:13pt;font-family:맑은 고딕;border:1px solid #DDDDDD;
+	border-radius:5px;
+}
+
+
+
+
+
+
+
+
+
+.mvwizSWF2 img{
+border:0px;
+}
+
+
+.mvwizSWF2 .tbl1{
+font-size:9pt;
+border-collapse: collapse;
+}
+
+
+
+.mvwizSWF2 .tbl1 td{
+border-bottom:1px solid #DDDDDD;
+padding:10px 5px;
+height:30px;
+font-size:12px;
+font-family:맑은 고딕,verdana,tahoma;
+color:#666666;
+vertical-align:middle;
+line-height:150%;
+}
+
+
+
+
+
+.mvwizSWF2 .tbl1 thead td{
+border-top:2px solid #666666;
+border-bottom:2px solid #DDDDDD;
+border-left:0px;
+background-color:#FFFFFF;
+padding:10px 3px;
+
+font-size:11pt;
+font-family:맑은 고딕;
+font-weight:bold;
+color:#666666;
+text-align:center;
+	border-right:1px solid #eeeeee;
+}
+
+
+.mvwizSWF2 .tbl1 thead td:last-child {border-right:0px;}
+
+
+.mvwizSWF2 .tbl1 .thead {
+border-top:2px solid #a6a6a6;
+border-bottom:1px solid #DDDDDD;
+border-left:0px;
+background-color:#f8f8f8;
+padding:5px;
+height:30px;
+font-size:10pt;
+font-family:맑은 고딕;
+font-weight:bold;
+color:#7c7c7c;
+text-align:center;
+}
+
+
+
+
+
+
+
+
+.mvwizSWF2 .tbl2{
+font-size:9pt;
+border:1px solid #CCCCCC;
+border-collapse: collapse;
+font-family:돋움,verdana,tahoma;
+color:#3b3b3b;
+line-height:150%;
+}
+
+
+.mvwizSWF2 .tbl2 td{
+padding:7px;
+border:1px solid #CCCCCC;
+line-height:150%;
+}
+
+.mvwizSWF2 .tbl2 .td1{
+background-color:#ededed;
+width:90px;
+text-align:right;
+line-height:150%;
+
+}
+
+.mvwizSWF2 .tbl2 .inputbox{
+border:1px solid #d3d3d3;
+background-color:#f7fcff;
+}
+
+
+
+
+
+
+
+
+
+
+.mvwizSWF2 .tbl3{
+font-size:9pt;
+border-collapse: collapse;
+background-color:#f9f9f9;
+
+}
+
+
+
+.mvwizSWF2 .tbl3 td{
+border:1px solid #cfd6de;
+padding:5px;
+height:30px;
+font-size:12px;
+font-family:맑은 고딕,verdana,tahoma;
+color:#584e56;
+line-height:150%;
+vertical-align:middle;
+}
+
+.mvwizSWF2 .tbl3  .bg{
+	background-color:#eef3f8;
+}
+
+
+.mvwizSWF2 .tbl3 thead td{
+border-bottom:1px solid #416f93;
+border-left:0px;
+background-color:#8ab5d7;
+padding:5px;
+height:25px;
+font-size:9pt;
+font-family:verdana;
+color:#FFFFFF;
+font-weight:bold;
+text-align:center;
+vertical-align:middle;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mvwizSWF2 .input3{font-size:9pt;padding:7px;border:1px solid #DDDDDD;}
+.mvwizSWF2 .btn3{font-size:12pt;padding:5px 15px;border:0px;border-radius:0px;
+   -webkit-appearance: none;
+   -webkit-border-radius: 0;
+}
+
+
+.mvwizSWF2 .green{background-color:#7fbe50;border:1px solid #7fbe50;color:#FFFFFF;}
+
+.mvwizSWF2 .yellow{background-color:#f6c731;border:1px solid #f6c731;color:#FFFFFF;}
+.mvwizSWF2 .blue{background-color:#3eadf6;border:1px solid #3eadf6;color:#FFFFFF;}
+.mvwizSWF2 .orange{background-color:#ff7c25;border:1px solid #ff7c25;color:#FFFFFF;}
+.mvwizSWF2 .gray{background-color:#8c8c8c;border:1px solid #8c8c8c;color:#FFFFFF;}
+
+
+
+
+
+
+
+
+
+.mvwizSWF2 .textbox{
+font-size:9pt;
+padding:3px;
+border:1px solid #DDDDDD;
+border-top:1px solid #bababa;
+border-left:1px solid #bababa;
+height:18px;
+
+}
+
+
+
+/* Button Reset */
+.mvwizSWF2 .button,
+.mvwizSWF2 .button a,
+.mvwizSWF2 .button button,
+.mvwizSWF2 .button input { position:relative; margin:0; display:-moz-inline-stack; display:inline-block; text-decoration:none !important; border:0; font-size:12px; font-family:Tahoma, Sans-serif; white-space:nowrap; background:url("/reverseclinic-mirror/site/reverseclinic.com/mvwizSWF3.0/img/buttonWhite.gif") no-repeat; overflow:visible; color:#333;}
+.mvwizSWF2 .button { height:23px; padding:0; vertical-align:middle; margin-right:2px; background-position:left top;}
+.mvwizSWF2 .button a,
+.mvwizSWF2 .button button,
+.mvwizSWF2 .button input{ left:2px; vertical-align:top; cursor:pointer;}
+
+/* Button Size */
+.mvwizSWF2 .button.large { height:29px; background-position:left -30px; }
+.mvwizSWF2 .button.xLarge { height:35px; background-position:left -65px; }
+.mvwizSWF2 .button.small { height:18px; background-position:left -107px; }
+.mvwizSWF2 .button a,
+.mvwizSWF2 .button button,
+.mvwizSWF2 .button input { height:23px; padding:0 10px 0 8px; font-size:12px; line-height:23px; background-position:right top;}
+.mvwizSWF2 .button.large a,
+.mvwizSWF2 .button.large button,
+.mvwizSWF2 .button.large input { height:30px; padding:0 10px 0 8px; font-size:16px; line-height:29px; background-position:right -30px;}
+.mvwizSWF2 .button.xLarge a,
+.mvwizSWF2 .button.xLarge button,
+.mvwizSWF2 .button.xLarge input { height:35px; padding:0 10px 0 8px; font-size:20px; line-height:35px; background-position:right -65px;}
+.mvwizSWF2 .button.small a,
+.mvwizSWF2 .button.small button,
+.mvwizSWF2 .button.small input { height:18px; padding:0 6px 0 4px; font-size:11px; line-height:18px; background-position:right -107px;}
+
+/* Button Text Color */
+.mvwizSWF2 .button *:hover,
+.mvwizSWF2 .button *:active,
+.mvwizSWF2 .button *:focus{ color:#690;}
+.mvwizSWF2 .button.green,
+.mvwizSWF2 .button.green a,
+.mvwizSWF2 .button.green button,
+.mvwizSWF2 .button.green input { background-image:url("/reverseclinic-mirror/site/reverseclinic.com/mvwizSWF3.0/img/buttonGreen.gif"); color:#fff;}
+.mvwizSWF2 .button.green *:hover,
+.mvwizSWF2 .button.green *:active,
+.mvwizSWF2 .button.green *:focus{ color:#ff0;}
+.mvwizSWF2 .button.black,
+.mvwizSWF2 .button.black a,
+.mvwizSWF2 .button.black button,
+.mvwizSWF2 .button.black input { background-image:url("/reverseclinic-mirror/site/reverseclinic.com/mvwizSWF3.0/img/buttonBlack.gif"); color:#fff;}
+.mvwizSWF2 .button.black *:hover,
+.mvwizSWF2 .button.black *:active,
+.mvwizSWF2 .button.black *:focus{ color:#ff0;}
+.mvwizSWF2 .button.red,
+.mvwizSWF2 .button.red a,
+.mvwizSWF2 .button.red button,
+.mvwizSWF2 .button.red input { background-image:url("/reverseclinic-mirror/site/reverseclinic.com/mvwizSWF3.0/img/buttonRed.gif"); color:#fff;}
+.mvwizSWF2 .button.red *:hover,
+.mvwizSWF2 .button.red *:active,
+.mvwizSWF2 .button.red *:focus{ color:#ff0;}
+.mvwizSWF2 .button.blue,
+.mvwizSWF2 .button.blue a,
+.mvwizSWF2 .button.blue button,
+.mvwizSWF2 .button.blue input { background-image:url("/reverseclinic-mirror/site/reverseclinic.com/mvwizSWF3.0/img/buttonBlue.gif"); color:#fff;}
+.mvwizSWF2 .button.blue *:hover,
+.mvwizSWF2 .button.blue *:active,
+.mvwizSWF2 .button.blue *:focus{ color:#ff0;}
+
+/* Button Text Strong */
+.mvwizSWF2 .button.strong * { font-weight:bold !important;}
+
+
+
+
+
+.mvwizSWF2 .reply_cnt{
+font-size:9px;
+font-family:verdana;
+font-weight:bold;
+color:#ff4e00;
+}
+
+
+
+
+.mvwizSWF2 .font9_1{
+font-size:9pt;
+font-family:verdana;
+color:#666666;
+}
+
+
+.mvwizSWF2 .font9_2{
+font-size:9pt;
+font-family:verdana;
+font-weight:bold;
+color:#ff4e00;
+}
+
+.mvwizSWF2 .pn1{
+font-size:10pt;font-family:verdana;
+font-weight:bold;
+text-decoration:none;
+background-color:#3B7EC3;
+color:#FFFFFF;
+padding:2px 5px 2px 5px;
+}
+
+.mvwizSWF2 .pn2{
+font-size:10pt;font-family:verdana;
+text-decoration:none;
+color:#666666;
+}
+
+
+
+
+.mvwizSWF2 .main_lst_title{
+font-size:12pt;font-family:맑은 고딕;
+color:#000000;
+margin-bottom:10px;
+}
+
+
+.mvwizCenterv{position: relative;top: 50%;transform: translateY(-50%);}
+
+.mvwizGridbox{margin: 0; padding: 0; list-style: none;}
+ul.mvwizGridbox {width:100%; margin: 0px auto; text-align: center;}
+ul.mvwizGridbox:after {clear:both; display:block; content:'';}
+ul.mvwizGridbox li {display: inline-block;  position:relative;overflow:hidden;text-align:center;vertical-align: top;}
+
+
+
+
+.mvwizNumberlist	{list-style:none;}
+.mvwizNumberlist li	{padding:0 0 0 30px; position:relative;list-style:none;}
+.mvwizNumberlist li span {position:absolute; top:0; left:0; text-align:center;}
+
+
+
+#cms2frame input[type=text]{
+	padding:5px;font-size:10pt;
+}
+#cms2frame input[type=button]{
+	padding:5px 10px;font-size:10pt;
+}
+
+#cms2frame textarea{
+	padding:5px;font-size:10pt;line-height:150%;
+}
+
+#mvwizCMS2_input_dsp{
+	font-size:12pt;
+}
+
+
+/**************************************************************************************
+  htmlDatePicker CSS file
+  
+  Feel Free to change the fonts, sizes, borders, and colours of any of these elements
+***************************************************************************************/
+/* The containing DIV element for the Calendar */
+#dpCalendar {
+  display: none;          /* Important, do not change */
+  position: absolute;        /* Important, do not change */
+  background-color: #eeeeee;
+  color: black;
+  font-size: xx-small;
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+  width: 150px;
+}
+
+
+
+
+
+/* The table of the Calendar */
+#dpCalendar table {
+  border: 1px solid #777777;
+  background-color: #F5F5F5;
+  color: black;
+  font-size: xx-small;
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+  width: 100%;
+}
+
+
+
+/* The Next/Previous buttons */
+#dpCalendar .cellButton {
+  background-color: #f6f6f6;
+  color: black;
+}
+/* The Month/Year title cell */
+#dpCalendar .cellMonth {
+  background-color: #f6f6f6;
+  color: black;
+  text-align: center;
+}
+/* Any regular day of the month cell */
+#dpCalendar .cellDay {
+  background-color: #f6f6f6;
+  color: black;
+  text-align: center;
+}
+/* The day of the month cell that is selected */
+#dpCalendar .cellSelected {
+  border: 1px solid red;
+  background-color: #ffdddd;
+  color: black;
+  text-align: center;
+}
+
+
+
+/* The day of the month cell that is Today */
+#dpCalendar .cellToday {
+  background-color: #777777;
+  color: black;
+  text-align: center;
+}
+
+#dpCalendar .cellToday a{
+color:#FFFFFF;
+}
+
+/* Any cell in a month that is unused (ie: Not a Day in that month) */
+#dpCalendar .unused {
+  background-color: transparent;
+  color: black;
+}
+
+
+
+
+/* The cancel button */
+#dpCalendar .cellCancel {
+border-top:1px solid #9FB2D0;
+border-left:1px solid #7490BC;
+border-right:1px solid #2C4E8C;
+border-bottom:1px solid #1B3B7B;
+padding:3px 0px 1px 0px;
+background-color:#777777;
+text-align:center;
+}
+
+#dpCalendar .cellCancel a{
+font-size:10px;font-family:verdana;
+color:#FFFFFF;
+}
+
+
+/* The clickable text inside the calendar */
+#dpCalendar a {
+  text-decoration: none;
+  background-color: transparent;
+  color: #777777;
+}  
+
+
+
+.mvwizBoard_say_view img{max-width:100%;}
+
+
+
+
+
+
+
+    .btn-wp.type1 {
+        border: 1px solid #888888;
+        background-color: #fff;
+        color: #222;
+        transition: all .3s;
+        overflow: hidden;
+        vertical-align: top;
+    }
+
+    .btn-wp {
+        position: relative;
+        width: 140px;
+        display: inline-block;
+        line-height: 40px;
+        font-size: 18px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .btn-wp.type1:before {
+        position: absolute;
+        top: 0;
+        left: -140%;
+        width: 123%;
+        height: 100%;
+        display: block;
+        content: "";
+        background-color: #222;
+        transform: skewX(40deg);
+        transition: all .4s;
+    }
+
+    .btn-wp.type1:after {
+        position: absolute;
+        top: 0;
+        right: -140%;
+        width: 123%;
+        height: 100%;
+        display: block;
+        content: "";
+        background-color: #222;
+        transform: skewX(40deg);
+        transition: all .4s;
+    }
+
+    .btn-wp.type1 span {
+        position: relative;
+        z-index: 1;
+    }
+
+    .btn-wp.type1 a {
+		text-decoration:none;
+	}
+
+
+
+    .btn-wp.type1:hover{color:#fff;}
+    .btn-wp.type1:hover:before{left:-70%;}
+    .btn-wp.type1:hover:after{right:-70%;}

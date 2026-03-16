@@ -1,0 +1,134 @@
+<!doctype html>
+<div style="width:100%;" id="mvwizBlacksheep_dsp">
+		<div style="position:relative;width:400px;;max-width:calc(100% - 80px);min-width:300px;background-color:#f5f6f7;padding:10px;border:2px solid #818181;border-radius:5px;margin:30px auto;" class="mvwizSWF2">
+
+		
+
+
+<div style="padding:20px 0px;font-size:10pt;text-align:center;line-height:170%;" id="login_message_dsp">로그인을 하시면 <br><b style="font-weight:bold;"> 리버스클리닉 강남점 </b><br>사이트의 로그인 서비스를 이용할 수 있습니다.</div>
+
+<script>
+try{
+	if(login_open_message){
+		document.getElementById('login_message_dsp').innerHTML = login_open_message;
+	}
+}catch(e){
+
+}
+</script>
+<form class="mvwizboard-write-form-css" method="post" action="/?_simpleApps=member%2Flogin" enctype="multipart/form-data" onsubmit=" 
+jframe('/?_simpleApps=member%2Flogin','mvwizLogin_execdsp',this);return false;"><div><table border="0" cellpadding="0" cellspacing="0" class="ftbl1" width="100%" style=""><tbody><tr><td class="t_header" style="font-weight:bold;line-height:150%;word-break:keep-all;" width="110" ondblclick="alert('id');return false;">아이디</td><td style="line-height:150%;word-break:keep-all;"><input type="text" name="id" style="width:80%;" value=""> </td></tr><tr><td class="t_header" style="font-weight:bold;line-height:150%;word-break:keep-all;" width="110" ondblclick="alert('pw');return false;">비밀번호</td><td style="line-height:150%;word-break:keep-all;"><input type="password" name="pw" style="width:80%;" value=""> </td></tr></tbody></table></div>
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="center" style="padding:10px;">
+
+<input type="submit" value="로그인 하기" id="" class="btn3 gray" style="">
+ 
+</td></tr></tbody></table>
+</form>
+
+<script>
+var mvwizLibrary_file_form_id = "";
+</script>
+
+
+<div style="padding:20px;text-align:center;border-top:1px solid #DDDDDD;margin-top:10px;" id="logincss-btn02">
+
+
+<input type="button" value="회원가입" onclick="jframe('/?_simpleApps=member/join','blacksheepwall',this);" id="log_join" class="btn3 orange" style="width:130px;">
+<input type="button" value="취소" onclick="blacksheepwall_close()" class="btn3 gray" style="width:130px;">
+<br><br>
+<input type="button" value="아이디 찾기" onclick="jframe('/?_simpleApps=member/find-id','blacksheepwall',this);" class="btn3 gray" style="width:130px;">
+<input type="button" value="비밀번호 찾기" onclick="jframe('/?_simpleApps=member/find-pw','blacksheepwall',this);" class="btn3 gray" style="width:130px;">
+
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="text-align:center;" id="kakaologin-sns-btn">
+
+<a id="custom-login-btn" href="#" onclick="
+try{
+	setInterval(function(){
+	try{
+		if(getCookie('sns_id')){
+			location.reload();
+		}
+	}catch(e){
+
+}
+	}, 500);
+}catch(e){
+
+}
+loginWithKakao();
+return false;
+"><img src="/reverseclinic-mirror/site/k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222"></a>
+
+</div>
+
+
+
+
+
+<br><img src="/reverseclinic-mirror/site/reverseclinic.com/_files/5N0j3m8CT.png" style="cursor:pointer;" onclick="
+	
+
+var win = window.open('https://nid.naver.com/oauth2.0/authorize?client_id=NDvD2FMWhu8qjV406ka1&amp;response_type=code&amp;redirect_uri=https%3A%2F%2Freverseclinic.com%2F%3F_simpleApps%3Dmember%252Flogin%26idx%3D%26naver%3D1&amp;state=a565b04a6841ac17caa793cec13f250a', '네이버 아이디로 로그인','width=480, height=680, toolbar=no, location=no');  
+var timer = setInterval(function() {    
+if(win.closed) {   
+window.location.reload(); 
+}   
+}, 500);  
+">
+
+
+
+
+
+<br>
+
+
+
+<div style="border-radius:5px;overflow:hidden; border:1px solid #DDDDDD;width:222px;height:45px;margin:10px auto;cursor:pointer;"><img src="/reverseclinic-mirror/site/reverseclinic.com/_files/5TFnzeK7X.png" style="cursor:pointer;" onclick="window.open('https://id.mvwiz.com?getToken=https%3A%2F%2Freverseclinic.com%2F','_blank');"></div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="padding:20px;" id="mvwizLogin_execdsp"></div>
+
+		<img src="/reverseclinic-mirror/site/reverseclinic.com/_files/6hRsaRcSl.png" height="40" width="40" style="position:absolute;cursor:pointer;right:-20px;top:-20px;;" onclick="
+		document.getElementById('blacksheepwall').innerHTML='';
+		$('#blacksheepwall').fadeOut(300);
+		" class="jframe-window-close-button">
+		<div id="mvwizBlacksheep_dsp_cmd"></div></div>
+
+		</div>
+		

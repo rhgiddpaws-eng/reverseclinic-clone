@@ -1,0 +1,35 @@
+{
+  "name": "reverseclinic-clone",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "qa:long-page": "node scripts/capture-long-page-regression.mjs",
+    "mirror:build": "node scripts/build-mirror-pages.mjs"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.16",
+    "cheerio": "^1.1.0",
+    "lucide-react": "^0.577.0",
+    "next": "^16.1.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9",
+    "eslint-config-next": "^16.1.6",
+    "playwright": "^1.51.1",
+    "typescript": "^5"
+  }
+}
