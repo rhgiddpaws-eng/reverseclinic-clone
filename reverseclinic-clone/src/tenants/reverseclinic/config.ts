@@ -71,6 +71,7 @@ export const reverseClinicTenantConfig = {
       "reverseclinic.com",
       "www.reverseclinic.com",
       "reverseclinic.localhost",
+      "reverseclinic-clone.vercel.app",
       "127.0.0.1",
       "localhost",
       ...getAllReverseClinicSites().map((site) => site.host),
