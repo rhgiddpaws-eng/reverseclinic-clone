@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
-/* 嚥≪뮇類??怨좊뱜筌????????쎈뱜??곌쾿 ??곸뵠??揶쏆늿? ????꾨７???醫???뺣뼄. */
+/* NanumSquare - Naver CDN */
 @font-face {
   font-family: "NanumSquare";
-  src: url("/reverseclinic-mirror/fonts/NanumSquareL.ttf") format("truetype");
+  src: url("https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareL.woff2") format("woff2"),
+       url("https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareL.woff") format("woff");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -11,7 +12,8 @@
 
 @font-face {
   font-family: "NanumSquare";
-  src: url("/reverseclinic-mirror/fonts/NanumSquareR.ttf") format("truetype");
+  src: url("https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareR.woff2") format("woff2"),
+       url("https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareR.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -19,7 +21,8 @@
 
 @font-face {
   font-family: "NanumSquare";
-  src: url("/reverseclinic-mirror/fonts/NanumSquareB.ttf") format("truetype");
+  src: url("https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareB.woff2") format("woff2"),
+       url("https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareB.woff") format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -27,15 +30,17 @@
 
 @font-face {
   font-family: "NanumSquare";
-  src: url("/reverseclinic-mirror/fonts/NanumSquareEB.ttf") format("truetype");
+  src: url("https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareEB.woff2") format("woff2"),
+       url("https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquare/NanumSquareEB.woff") format("woff");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 
+/* Noto Sans KR - Google Fonts CDN */
 @font-face {
   font-family: "Noto Sans KR";
-  src: url("/reverseclinic-mirror/fonts/NotoSansKR-300.ttf") format("truetype");
+  src: url("https://fonts.gstatic.com/s/notosanskr/v36/PbyxFmXiEBPT4ITbgNA5Cgms3VYcOA-vvnIzzuoyeLTq8H4hfeE.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -43,7 +48,7 @@
 
 @font-face {
   font-family: "Noto Sans KR";
-  src: url("/reverseclinic-mirror/fonts/NotoSansKR-400.ttf") format("truetype");
+  src: url("https://fonts.gstatic.com/s/notosanskr/v36/PbyxFmXiEBPT4ITbgNA5Cgms3VYcOA-vvnIzzuozeLTq8H4hfeE.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -51,7 +56,7 @@
 
 @font-face {
   font-family: "Noto Sans KR";
-  src: url("/reverseclinic-mirror/fonts/NotoSansKR-500.ttf") format("truetype");
+  src: url("https://fonts.gstatic.com/s/notosanskr/v36/PbyxFmXiEBPT4ITbgNA5Cgms3VYcOA-vvnIzzpY1eLTq8H4hfeE.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -59,15 +64,16 @@
 
 @font-face {
   font-family: "Noto Sans KR";
-  src: url("/reverseclinic-mirror/fonts/NotoSansKR-700.ttf") format("truetype");
+  src: url("https://fonts.gstatic.com/s/notosanskr/v36/PbyxFmXiEBPT4ITbgNA5Cgms3VYcOA-vvnIzzuoyeLTq8H4hfeE.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
+/* Noto Serif KR - Google Fonts CDN */
 @font-face {
   font-family: "Noto Serif KR";
-  src: url("/reverseclinic-mirror/fonts/NotoSerifKR-300.ttf") format("truetype");
+  src: url("https://fonts.gstatic.com/s/notoserifkr/v18/3JnmSDn90Gmq2mr3blnHaTZXTihE8H-sOLNO3seg-quBMdm0.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -75,7 +81,7 @@
 
 @font-face {
   font-family: "Noto Serif KR";
-  src: url("/reverseclinic-mirror/fonts/NotoSerifKR-400.ttf") format("truetype");
+  src: url("https://fonts.gstatic.com/s/notoserifkr/v18/3JnmSDn90Gmq2mr3blnHaTZXTihE8H-sOLNO3seg-quEMdm0.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -83,7 +89,7 @@
 
 @font-face {
   font-family: "Noto Serif KR";
-  src: url("/reverseclinic-mirror/fonts/NotoSerifKR-600.ttf") format("truetype");
+  src: url("https://fonts.gstatic.com/s/notoserifkr/v18/3JnmSDn90Gmq2mr3blnHaTZXTihE8H-sOLNO3seg-quMMdm0.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -91,7 +97,7 @@
 
 @font-face {
   font-family: "Noto Serif KR";
-  src: url("/reverseclinic-mirror/fonts/NotoSerifKR-700.ttf") format("truetype");
+  src: url("https://fonts.gstatic.com/s/notoserifkr/v18/3JnmSDn90Gmq2mr3blnHaTZXTihE8H-sOLNO3seg-quNMdm0.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
