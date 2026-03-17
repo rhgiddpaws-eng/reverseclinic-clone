@@ -400,11 +400,100 @@ function renderEventGalleryDetail(
 }
 
 function restoreBestSlider(root: HTMLElement) {
-  const slider = root.querySelector<HTMLElement>(".sliderdd.single-item.slick-initialized");
-  if (!slider) {
+  // Slick 마크업이 있는 경우 (slick-initialized)
+  const slickSlider = root.querySelector<HTMLElement>(".sliderdd.single-item.slick-initialized");
+  if (slickSlider) {
+    return restoreBestSliderSlick(slickSlider);
+  }
+
+  // Slick 마크업이 없는 경우 (raw HTML) — CSS 기반 슬라이더로 변환
+  const rawSlider = root.querySelector<HTMLElement>(".sliderdd.single-item");
+  if (!rawSlider) {
     return () => {};
   }
 
+  const items = Array.from(rawSlider.querySelectorAll<HTMLElement>(":scope > .item"));
+  if (items.length === 0) {
+    return () => {};
+  }
+
+  // 슬라이더 래퍼 구조 생성
+  const wrapper = document.createElement("div");
+  wrapper.style.cssText = "overflow:hidden;position:relative;width:100%;";
+
+  const track = document.createElement("div");
+  track.style.cssText =
+    "display:flex;transition:transform 0.5s ease;will-change:transform;";
+
+  // 아이템을 track으로 이동
+  items.forEach((item) => {
+    item.style.cssText =
+      "flex:0 0 100%;max-width:100%;box-sizing:border-box;transition:opacity 0.3s;";
+    track.appendChild(item);
+  });
+
+  wrapper.appendChild(track);
+  rawSlider.innerHTML = "";
+  rawSlider.appendChild(wrapper);
+
+  // 화살표 생성
+  const createArrow = (label: string, isLeft: boolean) => {
+    const btn = document.createElement("button");
+    btn.textContent = isLeft ? "‹" : "›";
+    btn.setAttribute("aria-label", label);
+    btn.style.cssText = `
+      position:absolute;top:50%;transform:translateY(-50%);z-index:2;
+      border:none;width:60px;height:60px;border-radius:60px;
+      background:rgba(255,255,255,0.66);font-size:28px;cursor:pointer;
+      ${isLeft ? "left:max(0px,50% - 530px)" : "right:max(0px,50% - 530px)"};
+    `;
+    return btn;
+  };
+  const prevBtn = createArrow("이전", true);
+  const nextBtn = createArrow("다음", false);
+  rawSlider.style.position = "relative";
+  rawSlider.appendChild(prevBtn);
+  rawSlider.appendChild(nextBtn);
+
+  let currentIndex = 0;
+
+  const updateSlider = () => {
+    track.style.transform = `translate3d(-${currentIndex * 100}%, 0, 0)`;
+    items.forEach((item, i) => {
+      const img = item.querySelector("img");
+      if (img) img.style.opacity = i === currentIndex ? "1" : "0.4";
+    });
+  };
+
+  const handlePrev = (e: MouseEvent) => {
+    e.preventDefault();
+    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    updateSlider();
+  };
+  const handleNext = (e: MouseEvent) => {
+    e.preventDefault();
+    currentIndex = (currentIndex + 1) % items.length;
+    updateSlider();
+  };
+
+  prevBtn.addEventListener("click", handlePrev);
+  nextBtn.addEventListener("click", handleNext);
+  updateSlider();
+
+  // 자동 슬라이드 (5초)
+  const autoSlide = setInterval(() => {
+    currentIndex = (currentIndex + 1) % items.length;
+    updateSlider();
+  }, 5000);
+
+  return () => {
+    prevBtn.removeEventListener("click", handlePrev);
+    nextBtn.removeEventListener("click", handleNext);
+    clearInterval(autoSlide);
+  };
+}
+
+function restoreBestSliderSlick(slider: HTMLElement) {
   const track = slider.querySelector<HTMLElement>(".slick-track");
   const list = slider.querySelector<HTMLElement>(".slick-list");
   const prevButton = slider.querySelector<HTMLButtonElement>(".slick-prev");

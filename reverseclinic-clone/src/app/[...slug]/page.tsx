@@ -1,6 +1,9 @@
 import { buildSiteEntryMetadata, renderSiteEntryPage } from "@/lib/reverse-site-entry";
 import type { MirrorLocale, MirrorBranch } from "@/lib/reverseclinic-types";
 
+// 정적 페이지로 캐싱 — 콘텐츠 변경 없으므로 재검증 불필요
+export const dynamic = "force-static";
+
 const LOCALES = new Set<string>(["en", "jp", "cn"]);
 const BRANCHES = new Set<string>([
   "gangnam", "hongdae", "myeongdong", "incheon-guwol",

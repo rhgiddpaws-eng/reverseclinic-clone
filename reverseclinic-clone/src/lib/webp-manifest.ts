@@ -13,5 +13,19 @@ const manifest = webpManifest as Record<string, string>;
 export function resolveToWebp(href: string): string {
   const qIdx = href.indexOf("?");
   const cleanHref = qIdx >= 0 ? href.slice(0, qIdx) : href;
-  return manifest[cleanHref] ?? href;
+
+  // 1) 정확 매칭
+  if (manifest[cleanHref]) return manifest[cleanHref];
+
+  // 2) 확장자가 없는 경우 — .webp, .png, .jpg 순으로 매니페스트 탐색
+  if (!/\.\w{2,5}$/.test(cleanHref)) {
+    for (const ext of [".webp", ".png", ".jpg", ".jpeg", ".gif"]) {
+      const withExt = cleanHref + ext;
+      if (manifest[withExt]) return manifest[withExt];
+    }
+    // 매니페스트에 없어도 .webp 파일이 있을 수 있음
+    return cleanHref + ".webp";
+  }
+
+  return cleanHref;
 }
