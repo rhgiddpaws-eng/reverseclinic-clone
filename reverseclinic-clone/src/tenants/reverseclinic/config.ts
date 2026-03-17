@@ -51,9 +51,9 @@ const reverseClinicLocaleHosts = {
 
 const reverseClinicMirrorAssets = {
   ...mirrorAssets,
-  authCloseIcon: "/reverseclinic-mirror/site/reverseclinic.com/_files/6hRsaRcSl.png",
+  authCloseIcon: "/reverseclinic-mirror/site/reverseclinic.com/_files/6hRsaRcSl.webp",
   authSupportBanner:
-    "/reverseclinic-mirror/site/k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg",
+    "/reverseclinic-mirror/site/k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.webp",
 } as const;
 
 export const reverseClinicTenantConfig = {

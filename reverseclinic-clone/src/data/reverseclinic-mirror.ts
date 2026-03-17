@@ -37,7 +37,7 @@ export const mirrorAssets = {
   logoMobile: file("6yaF3p3ap.webp"),
   menuIcon: file("5T_VCCodx.webp"),
   mobileMenuIcon: file("5P6dTap56.webp"),
-  cartIcon: file("5UeBz5roE.png"),
+  cartIcon: file("5UeBz5roE.webp"),
   dropdownArrow: file("65O7j5zM7.webp"),
   languageKr: file("65O7j5Ecs.webp"),
   languageEn: file("65O7j5Fha.webp"),
