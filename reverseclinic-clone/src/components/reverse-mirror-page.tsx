@@ -416,9 +416,14 @@ function restorePriceTabs(root: HTMLElement) {
   );
   if (!hasPriceLinks) return () => {};
 
-  // 콘텐츠 영역: .price_tab 이후의 모든 형제 요소
-  const priceTabParent = priceTab.parentElement;
-  if (!priceTabParent) return () => {};
+  // 콘텐츠 영역: .mvwiztemplate_view_dsp 안에서 탭 div 이후 형제들
+  const templateContainer = root.querySelector<HTMLElement>(".mvwiztemplate_view_dsp");
+  if (!templateContainer) return () => {};
+
+  // 탭을 포함하는 div 찾기
+  const templateChildren = Array.from(templateContainer.children);
+  const tabContainerIndex = templateChildren.findIndex((el) => el.querySelector(".price_tab"));
+  if (tabContainerIndex < 0) return () => {};
 
   const contentCache = new Map<string, string>();
   let loading = false;
@@ -428,9 +433,8 @@ function restorePriceTabs(root: HTMLElement) {
     (a) => a.closest("li")?.classList.contains("on"),
   )?.getAttribute("href") ?? "/price";
   const getCurrentContent = () => {
-    const siblings = Array.from(priceTabParent.children);
-    const tabIndex = siblings.indexOf(priceTab);
-    return siblings.slice(tabIndex + 1).map((el) => el.outerHTML).join("");
+    const children = Array.from(templateContainer.children);
+    return children.slice(tabContainerIndex + 1).map((el) => el.outerHTML).join("");
   };
   contentCache.set(currentHref, getCurrentContent());
 
@@ -454,19 +458,21 @@ function restorePriceTabs(root: HTMLElement) {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const html = await res.text();
 
-      // 응답 HTML에서 .price_tab 이후 콘텐츠만 추출
+      // 응답 HTML에서 .mvwiztemplate_view_dsp 안의 탭 div 이후 콘텐츠 추출
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, "text/html");
-      const remotePriceTab = doc.querySelector(".price_tab");
-      if (remotePriceTab?.parentElement) {
-        const remoteSiblings = Array.from(remotePriceTab.parentElement.children);
-        const remoteTabIdx = remoteSiblings.indexOf(remotePriceTab);
-        const content = remoteSiblings
-          .slice(remoteTabIdx + 1)
-          .map((el) => el.outerHTML)
-          .join("");
-        contentCache.set(href, content);
-        replaceContent(content);
+      const remoteTemplate = doc.querySelector(".mvwiztemplate_view_dsp");
+      if (remoteTemplate) {
+        const remoteChildren = Array.from(remoteTemplate.children);
+        const remoteTabIdx = remoteChildren.findIndex((el) => el.querySelector(".price_tab"));
+        if (remoteTabIdx >= 0) {
+          const content = remoteChildren
+            .slice(remoteTabIdx + 1)
+            .map((el) => el.outerHTML)
+            .join("");
+          contentCache.set(href, content);
+          replaceContent(content);
+        }
       }
     } catch {
       // 실패 시 일반 네비게이션으로 폴백
@@ -477,14 +483,14 @@ function restorePriceTabs(root: HTMLElement) {
   };
 
   const replaceContent = (html: string) => {
-    const siblings = Array.from(priceTabParent.children);
-    const tabIndex = siblings.indexOf(priceTab);
-    // 기존 콘텐츠 제거
-    for (let i = siblings.length - 1; i > tabIndex; i--) {
-      siblings[i].remove();
+    const children = Array.from(templateContainer.children);
+    const tabIdx = children.findIndex((el) => el.querySelector(".price_tab"));
+    // 기존 콘텐츠 제거 (탭 div 이후 전부)
+    for (let i = children.length - 1; i > tabIdx; i--) {
+      children[i].remove();
     }
     // 새 콘텐츠 삽입
-    priceTab.insertAdjacentHTML("afterend", html);
+    children[tabIdx].insertAdjacentHTML("afterend", html);
   };
 
   const handleClick = (event: Event) => {
