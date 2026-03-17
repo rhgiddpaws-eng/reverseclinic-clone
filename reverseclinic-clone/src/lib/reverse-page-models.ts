@@ -587,10 +587,19 @@ function extractDocumentStyles(pageHtml: string, tenantId: TenantId, siteId?: st
           return "reverseclinic.com";
         }
       })();
+      // 1) 원본 사이트 /_files/ 경로 → 로컬 미러 경로 + WebP
       styleText = styleText.replace(
         /url\(\s*(['"]?)\/_files\/([^)'"]+)\1\s*\)/g,
         (_match, quote: string, filePath: string) => {
           const localPath = `/reverseclinic-mirror/site/${originHost}/_files/${filePath}`;
+          const webpPath = resolveToWebp(localPath);
+          return `url(${quote}${webpPath}${quote})`;
+        },
+      );
+      // 2) 이미 크롤링 시점에 로컬 미러 경로로 저장된 _files 이미지도 WebP로 치환
+      styleText = styleText.replace(
+        /url\(\s*(['"]?)(\/reverseclinic-mirror\/site\/[^)'"]+\/_files\/[^)'"]+\.(?:png|jpe?g|gif))\1\s*\)/gi,
+        (_match, quote: string, localPath: string) => {
           const webpPath = resolveToWebp(localPath);
           return `url(${quote}${webpPath}${quote})`;
         },

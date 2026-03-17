@@ -642,6 +642,21 @@ function restoreBestSliderSlick(slider: HTMLElement) {
     baseSlides.findIndex((slide) => slide.classList.contains("slick-current")),
   );
 
+  // 슬라이드 너비를 신뢰성 있게 측정: offsetWidth → getBoundingClientRect → 이미지 naturalWidth → 폴백 순으로 시도
+  const resolveSlideWidth = (slide: HTMLElement): number => {
+    const ow = slide.offsetWidth;
+    if (ow > 0) return ow;
+
+    const rect = slide.getBoundingClientRect();
+    if (rect.width > 0) return rect.width;
+
+    // 이미지 naturalWidth를 폴백으로 사용 (화면 외부에 있어 offsetWidth가 0인 경우 대비)
+    const img = slide.querySelector<HTMLImageElement>("img");
+    if (img && img.naturalWidth > 0) return img.naturalWidth;
+
+    return 0;
+  };
+
   const updateSlider = () => {
     const visibleWidth = list.clientWidth;
 
@@ -669,9 +684,23 @@ function restoreBestSliderSlick(slider: HTMLElement) {
       anchor.tabIndex = 0;
     });
 
-    const slideWidth = currentSlide.offsetWidth || currentSlide.getBoundingClientRect().width || 0;
-    const offsetLeft = currentSlide.offsetLeft;
-    const targetX = Math.max(0, offsetLeft - Math.max(0, (visibleWidth - slideWidth) / 2));
+    const slideWidth = resolveSlideWidth(currentSlide);
+    if (slideWidth === 0) {
+      // 아직 레이아웃이 완성되지 않은 경우 — 다음 프레임에서 재시도
+      requestAnimationFrame(updateSlider);
+      return;
+    }
+
+    // offsetLeft가 정확하지 않을 경우 인덱스 기반으로 직접 계산
+    const offsetLeft =
+      currentSlide.offsetLeft > 0 || currentIndex === 0
+        ? currentSlide.offsetLeft
+        : currentIndex * slideWidth;
+    const listPadding = parseFloat(list.style.paddingLeft || "0") || 0;
+    const targetX = Math.max(
+      0,
+      offsetLeft - listPadding - Math.max(0, (visibleWidth - slideWidth) / 2),
+    );
     track.style.transform = `translate3d(-${targetX}px, 0px, 0px)`;
   };
 
@@ -690,7 +719,9 @@ function restoreBestSliderSlick(slider: HTMLElement) {
   prevButton.addEventListener("click", handlePrev);
   nextButton.addEventListener("click", handleNext);
   window.addEventListener("resize", updateSlider);
-  updateSlider();
+
+  // 초기화: RAF로 레이아웃 완료 후 실행
+  requestAnimationFrame(updateSlider);
 
   return () => {
     prevButton.removeEventListener("click", handlePrev);
