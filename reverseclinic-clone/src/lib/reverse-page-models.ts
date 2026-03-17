@@ -10,6 +10,7 @@ import {
 } from "@/lib/reverse-mirror-routing";
 import { buildReverseClinicAssetProxyHref } from "@/lib/reverse-asset-proxy";
 import { getTenantConfig } from "@/lib/tenant-registry";
+import { resolveToWebp } from "@/lib/webp-manifest";
 import { getMirrorRouteMap } from "@/lib/reverse-route-map";
 import type { TenantId } from "@/lib/tenant-types";
 import type {
@@ -427,8 +428,13 @@ function toLocalMirrorAssetHref(rawValue: string, tenantId: TenantId, siteId?: s
       ? "/reverseclinic-mirror"
       : tenantConfig.mirror.pageRoot.replace(/\/pages$/, "");
 
-  if (!rawValue || rawValue.startsWith(`${mirrorRootPrefix}/`)) {
+  if (!rawValue) {
     return rawValue;
+  }
+
+  // 이미 로컬 미러 경로인 경우에도 WebP 치환은 적용한다.
+  if (rawValue.startsWith(`${mirrorRootPrefix}/`)) {
+    return resolveToWebp(rawValue);
   }
 
   const url = safeUrl(rawValue, tenantId, siteId);
@@ -443,13 +449,9 @@ function toLocalMirrorAssetHref(rawValue: string, tenantId: TenantId, siteId?: s
 
   const localHref = `${tenantConfig.mirror.siteAssetRoot}/${normalizedHost}${url.pathname}${url.search}`;
 
-  // Vercel 환경에서는 public/ 파일을 런타임에 existsSync로 확인할 수 없으므로
-  // reverseclinic 테넌트는 항상 프록시 경로를 사용하고, 나머지는 localHref를 반환한다.
-  if (tenantId === "reverseclinic") {
-    return buildReverseClinicAssetProxyHref(normalizedHost, url.pathname, url.search);
-  }
-
-  return localHref;
+  // 로컬 파일을 직접 서빙하고, WebP가 있으면 WebP로 치환한다.
+  // (빌드 시점에 생성된 webp-manifest.json 참조)
+  return resolveToWebp(localHref);
 }
 
 function rewriteHref(
@@ -575,7 +577,7 @@ function extractDocumentStyles(pageHtml: string, tenantId: TenantId, siteId?: st
       return;
     }
 
-    // 인라인 스타일의 원본 사이트 /_files/ 폰트 URL을 프록시 경로로 변환
+    // 인라인 스타일의 원본 사이트 /_files/ URL을 로컬 site 경로로 변환
     if (tenantId === "reverseclinic" && styleText.includes("/_files/")) {
       const mirrorOrigin = resolveMirrorOrigin(tenantId, siteId);
       const originHost = (() => {
@@ -587,8 +589,11 @@ function extractDocumentStyles(pageHtml: string, tenantId: TenantId, siteId?: st
       })();
       styleText = styleText.replace(
         /url\(\s*(['"]?)\/_files\/([^)'"]+)\1\s*\)/g,
-        (_match, quote: string, filePath: string) =>
-          `url(${quote}/reverseclinic-mirror/proxy/${originHost}/_files/${filePath}${quote})`,
+        (_match, quote: string, filePath: string) => {
+          const localPath = `/reverseclinic-mirror/site/${originHost}/_files/${filePath}`;
+          const webpPath = resolveToWebp(localPath);
+          return `url(${quote}${webpPath}${quote})`;
+        },
       );
     }
 

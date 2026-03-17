@@ -6,7 +6,10 @@
     "node": ">=20"
   },
   "scripts": {
+    "generate:webp": "node scripts/generate-webp-manifest.mjs",
+    "predev": "node scripts/generate-webp-manifest.mjs",
     "dev": "next dev --turbopack",
+    "prebuild": "node scripts/generate-webp-manifest.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",

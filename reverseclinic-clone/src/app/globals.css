@@ -1,6 +1,6 @@
-@import "tailwindcss";
 @import url("https://cdn.jsdelivr.net/gh/nicecss/NanumSquare/nanumsquare.css");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@300;400;600;700&display=swap");
+@import "tailwindcss";
 
 :root {
   --reverse-black: #000;
@@ -11,11 +11,11 @@
   --reverse-soft-border: #ddd;
   --reverse-background: #f7f7f7;
   --reverse-pink: #ff71b0;
-  --reverse-hero-arrow-image: url("/reverseclinic-mirror/files/6uHYN04We.png");
-  --reverse-info-banner-image: url("/reverseclinic-mirror/files/6hRCIsFcK.jpg");
-  --reverse-footer-arrow-image: url("/reverseclinic-mirror/files/5MR1U6mr1.png");
-  --reverse-footer-sns-image: url("/reverseclinic-mirror/files/5TsU7Mz94.png");
-  --reverse-footer-sns-hover-image: url("/reverseclinic-mirror/files/5U5HQoGlZ.png");
+  --reverse-hero-arrow-image: url("/reverseclinic-mirror/files/6uHYN04We.webp");
+  --reverse-info-banner-image: url("/reverseclinic-mirror/files/6hRCIsFcK.webp");
+  --reverse-footer-arrow-image: url("/reverseclinic-mirror/files/5MR1U6mr1.webp");
+  --reverse-footer-sns-image: url("/reverseclinic-mirror/files/5TsU7Mz94.webp");
+  --reverse-footer-sns-hover-image: url("/reverseclinic-mirror/files/5U5HQoGlZ.webp");
 }
 
 html,

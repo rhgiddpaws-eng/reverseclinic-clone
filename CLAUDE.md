@@ -92,6 +92,8 @@ Host 헤더 / x-tenant-id
 | 통합 라우터 | `src/app/[...slug]/page.tsx` |
 | 로딩바 | `src/app/loading.tsx` |
 | next.config | `next.config.ts` (rewrites, excludes, image optimization) |
+| WebP 매니페스트 | `src/lib/webp-manifest.ts` + `src/generated/webp-manifest.json` |
+| WebP 생성 스크립트 | `scripts/generate-webp-manifest.mjs` (prebuild 자동 실행) |
 
 ---
 
@@ -115,5 +117,11 @@ Host 헤더 / x-tenant-id
 - [x] 미러 페이지 레이아웃 검증 — 메인/BEST/PRICE 정상, EVENT는 빈 페이지 (원본 사이트도 동일)
 - [x] CSS 폰트 URL 재작성 개선 — NanumSquare 폰트 프록시 경로 변환, 외부 URL http→https 업그레이드
 
+- [x] WebP 매니페스트 시스템 구축 — 빌드 시점에 webp-manifest.json 자동 생성 (333개 매핑)
+- [x] 이미지 프록시 제거 — 모든 이미지를 로컬 파일 직접 서빙으로 전환 (프록시 참조 0건)
+- [x] 전체 에셋 WebP 적용 — globals.css, mirrorAssets, 미러 콘텐츠 이미지 모두 WebP로 교체
+- [x] _files 리디렉트 → 로컬 site 경로 + WebP 자동 치환
+- [x] 전 페이지 검증 완료 — 메인/BEST/PRICE/EVENT 404 없음, 프록시 참조 0건
+
 ### 남은 작업
-- [ ] Vercel 재배포 (CSS 폰트 URL 재작성 코드 반영 필요)
+- [ ] Vercel 재배포 (WebP 매니페스트 + 프록시 제거 코드 반영 필요)

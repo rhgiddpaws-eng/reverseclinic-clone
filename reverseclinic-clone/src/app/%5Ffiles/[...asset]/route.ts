@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { buildReverseClinicAssetProxyHref } from "@/lib/reverse-asset-proxy";
+import { resolveToWebp } from "@/lib/webp-manifest";
 import {
   getReverseClinicSite,
   resolveReverseClinicSiteFromPathname,
@@ -36,8 +36,13 @@ export async function GET(request: NextRequest, context: FilesRouteContext) {
   }
 
   const host = resolveSiteHostFromReferer(request);
-  const proxyHref = buildReverseClinicAssetProxyHref(host, `/_files/${asset.join("/")}`);
-  const proxyUrl = new URL(proxyHref, request.url);
-  proxyUrl.search = request.nextUrl.search;
-  return NextResponse.redirect(proxyUrl);
+  const normalizedHost = host.replace(/^www\./, "").toLowerCase();
+  const assetPath = asset.join("/");
+
+  // 로컬 site 경로로 리디렉트하고 WebP가 있으면 WebP로 치환
+  const localHref = `/reverseclinic-mirror/site/${normalizedHost}/_files/${assetPath}`;
+  const resolvedHref = resolveToWebp(localHref);
+  const localUrl = new URL(resolvedHref, request.url);
+  localUrl.search = request.nextUrl.search;
+  return NextResponse.redirect(localUrl);
 }
