@@ -570,9 +570,26 @@ function extractDocumentStyles(pageHtml: string, tenantId: TenantId, siteId?: st
   });
 
   $("style").each((_, element) => {
-    const styleText = ($(element).html() ?? "").trim();
+    let styleText = ($(element).html() ?? "").trim();
     if (!styleText || seenStyle.has(styleText)) {
       return;
+    }
+
+    // 인라인 스타일의 원본 사이트 /_files/ 폰트 URL을 프록시 경로로 변환
+    if (tenantId === "reverseclinic" && styleText.includes("/_files/")) {
+      const mirrorOrigin = resolveMirrorOrigin(tenantId, siteId);
+      const originHost = (() => {
+        try {
+          return new URL(mirrorOrigin).hostname.replace(/^www\./, "");
+        } catch {
+          return "reverseclinic.com";
+        }
+      })();
+      styleText = styleText.replace(
+        /url\(\s*(['"]?)\/_files\/([^)'"]+)\1\s*\)/g,
+        (_match, quote: string, filePath: string) =>
+          `url(${quote}/reverseclinic-mirror/proxy/${originHost}/_files/${filePath}${quote})`,
+      );
     }
 
     seenStyle.add(styleText);
@@ -806,6 +823,17 @@ function rewriteMirrorDom(
     }
 
     $(element).attr("src", toLocalMirrorAssetHref(source, tenantId, siteId));
+  });
+
+  // 이미지 lazy loading + decoding 추가 (성능 최적화)
+  $("img").each((_, element) => {
+    const image = $(element);
+    if (!image.attr("loading")) {
+      image.attr("loading", "lazy");
+    }
+    if (!image.attr("decoding")) {
+      image.attr("decoding", "async");
+    }
   });
 
   $("img").each((_, element) => {

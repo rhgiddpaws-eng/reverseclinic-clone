@@ -107,8 +107,13 @@ Host 헤더 / x-tenant-id
 - [x] 깨진 로컬 폰트 삭제 (80MB), CDN으로 교체
 - [x] 로딩바 추가 (loading.tsx)
 
+- [x] 미러 페이지 CSS 폰트 경로 수정 — 프록시 `/_files/` URL 재작성, 캐시 헤더 최적화
+- [x] 이미지 lazy loading + async decoding 적용
+- [x] CDN 캐싱 최적화 — 폰트/이미지 1년 캐시, CSS 1일+stale-while-revalidate
+
+- [x] 이미지 WebP 변환 — 333개 이미지 변환, 187MB→89MB (52% 절약)
+- [x] 미러 페이지 레이아웃 검증 — 메인/BEST/PRICE 정상, EVENT는 빈 페이지 (원본 사이트도 동일)
+- [x] CSS 폰트 URL 재작성 개선 — NanumSquare 폰트 프록시 경로 변환, 외부 URL http→https 업그레이드
+
 ### 남은 작업
-- [ ] 미러 페이지 CSS에서 참조하는 폰트(.woff)가 여전히 깨짐 — 원본 CSS 파일 내부의 @font-face 경로 문제
-- [ ] 이미지 웹 최적화 — public/reverseclinic-mirror/ 내 PNG/JPG를 WebP/AVIF로 변환하거나, Next.js Image Optimization 적용
-- [ ] BEST 페이지 등 미러 페이지 레이아웃 검증 (폰트 로드 후 가로 배열 복원 확인)
-- [ ] 성능 추가 개선 — 이미지 lazy loading, CDN 캐싱 최적화
+- [ ] Vercel 재배포 (CSS 폰트 URL 재작성 코드 반영 필요)
