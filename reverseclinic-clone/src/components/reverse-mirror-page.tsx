@@ -399,6 +399,118 @@ function renderEventGalleryDetail(
   }
 }
 
+/**
+ * PRICE 페이지의 카테고리 탭을 클라이언트 사이드 전환으로 변환한다.
+ * _devnull_ 링크 클릭 시 fetch로 해당 페이지의 콘텐츠만 가져와 교체한다.
+ */
+function restorePriceTabs(root: HTMLElement) {
+  const priceTab = root.querySelector<HTMLElement>(".price_tab");
+  if (!priceTab) return () => {};
+
+  const tabLinks = priceTab.querySelectorAll<HTMLAnchorElement>("a[href]");
+  if (tabLinks.length < 2) return () => {};
+
+  // price 탭인지 확인 (_devnull_/c5e05b24 또는 /price 링크 존재)
+  const hasPriceLinks = Array.from(tabLinks).some(
+    (a) => a.href.includes("_devnull_/c5e05b24") || a.pathname === "/price",
+  );
+  if (!hasPriceLinks) return () => {};
+
+  // 콘텐츠 영역: .price_tab 이후의 모든 형제 요소
+  const priceTabParent = priceTab.parentElement;
+  if (!priceTabParent) return () => {};
+
+  const contentCache = new Map<string, string>();
+  let loading = false;
+
+  // 현재 콘텐츠를 캐시에 저장
+  const currentHref = Array.from(tabLinks).find(
+    (a) => a.closest("li")?.classList.contains("on"),
+  )?.getAttribute("href") ?? "/price";
+  const getCurrentContent = () => {
+    const siblings = Array.from(priceTabParent.children);
+    const tabIndex = siblings.indexOf(priceTab);
+    return siblings.slice(tabIndex + 1).map((el) => el.outerHTML).join("");
+  };
+  contentCache.set(currentHref, getCurrentContent());
+
+  const switchTab = async (href: string, clickedLink: HTMLAnchorElement) => {
+    if (loading) return;
+    loading = true;
+
+    // 탭 활성 상태 변경
+    tabLinks.forEach((a) => a.closest("li")?.classList.remove("on"));
+    clickedLink.closest("li")?.classList.add("on");
+
+    // 캐시에 있으면 즉시 교체
+    if (contentCache.has(href)) {
+      replaceContent(contentCache.get(href)!);
+      loading = false;
+      return;
+    }
+
+    try {
+      const res = await fetch(href);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const html = await res.text();
+
+      // 응답 HTML에서 .price_tab 이후 콘텐츠만 추출
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+      const remotePriceTab = doc.querySelector(".price_tab");
+      if (remotePriceTab?.parentElement) {
+        const remoteSiblings = Array.from(remotePriceTab.parentElement.children);
+        const remoteTabIdx = remoteSiblings.indexOf(remotePriceTab);
+        const content = remoteSiblings
+          .slice(remoteTabIdx + 1)
+          .map((el) => el.outerHTML)
+          .join("");
+        contentCache.set(href, content);
+        replaceContent(content);
+      }
+    } catch {
+      // 실패 시 일반 네비게이션으로 폴백
+      window.location.href = href;
+    } finally {
+      loading = false;
+    }
+  };
+
+  const replaceContent = (html: string) => {
+    const siblings = Array.from(priceTabParent.children);
+    const tabIndex = siblings.indexOf(priceTab);
+    // 기존 콘텐츠 제거
+    for (let i = siblings.length - 1; i > tabIndex; i--) {
+      siblings[i].remove();
+    }
+    // 새 콘텐츠 삽입
+    priceTab.insertAdjacentHTML("afterend", html);
+  };
+
+  const handleClick = (event: Event) => {
+    const target = event.target as HTMLElement;
+    const anchor = target.closest<HTMLAnchorElement>("a[href]");
+    if (!anchor || !priceTab.contains(anchor)) return;
+
+    const href = anchor.getAttribute("href")?.trim();
+    if (!href || href === "#") return;
+
+    // price 카테고리 탭 링크인지 확인
+    if (href.includes("_devnull_/c5e05b24") || href === "/price") {
+      event.preventDefault();
+      event.stopPropagation();
+      void switchTab(href, anchor);
+    }
+  };
+
+  // 캡처 페이즈로 이벤트 등록 — router.push보다 먼저 잡기 위해
+  priceTab.addEventListener("click", handleClick, true);
+
+  return () => {
+    priceTab.removeEventListener("click", handleClick, true);
+  };
+}
+
 function restoreBestSlider(root: HTMLElement) {
   // Slick 마크업이 있는 경우 (slick-initialized)
   const slickSlider = root.querySelector<HTMLElement>(".sliderdd.single-item.slick-initialized");
@@ -683,6 +795,14 @@ export function ReverseMirrorPage({
     }
 
     return restoreBestSlider(root);
+  }, [model.contentHtml, stylesReady]);
+
+  // PRICE 페이지 탭 클라이언트 전환
+  useEffect(() => {
+    if (!stylesReady) return;
+    const root = containerRef.current;
+    if (!root) return;
+    return restorePriceTabs(root);
   }, [model.contentHtml, stylesReady]);
 
   useEffect(() => {
