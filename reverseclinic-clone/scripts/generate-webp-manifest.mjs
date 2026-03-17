@@ -51,6 +51,7 @@ async function main() {
   const manifest = {};
   let mappings = 0;
 
+  // 원본 이미지(.jpg/.png 등)와 WebP가 함께 있는 경우 매핑
   for (const file of allFiles) {
     const ext = path.extname(file).toLowerCase();
     if (!IMAGE_EXTENSIONS.has(ext)) continue;
@@ -69,8 +70,19 @@ async function main() {
     mappings++;
   }
 
-  // WebP만 있고 원본이 없는 파일도 매핑 (WebP → WebP, 자기 자신)
-  // 이 경우는 별도 처리 불필요
+  // WebP만 있고 원본이 없는 파일: HTML이 원본 확장자로 참조할 수 있으므로
+  // 가상 원본 경로(.jpg, .png) → WebP 경로 매핑도 추가
+  const ORIGINAL_EXTS = [".jpg", ".jpeg", ".png", ".gif"];
+  for (const wf of webpFiles) {
+    const webpServing = "/" + path.relative(PUBLIC_DIR, wf).replace(/\\/g, "/");
+    for (const origExt of ORIGINAL_EXTS) {
+      const origServing = webpServing.replace(/\.webp$/, origExt);
+      if (!manifest[origServing]) {
+        manifest[origServing] = webpServing;
+        mappings++;
+      }
+    }
+  }
 
   await mkdir(path.dirname(OUTPUT_PATH), { recursive: true });
   await writeFile(OUTPUT_PATH, JSON.stringify(manifest, null, 2), "utf8");
